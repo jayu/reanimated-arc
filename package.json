@@ -12,6 +12,7 @@
     "eslint": "^6.8.0"
   },
   "scripts": {
+    "postinstall": "yarn --cwd reanimated-arc build",
     "lint": "eslint reanimated-arc example --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint reanimated-arc example --ext .js,.jsx,.ts,.tsx --fix",
     "typescript": "yarn --cwd reanimated-arc typescript && yarn --cwd example typescript",

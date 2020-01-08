@@ -4,7 +4,7 @@
     "module": "commonjs",
     "lib": ["es6"],
     "allowJs": true,
-    "checkJs": true,
+    "checkJs": false,
     "jsx": "react-native",
     "declaration": true,
     "sourceMap": true,
