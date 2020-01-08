@@ -1,6 +1,7 @@
 import React, {useRef, useState} from 'react';
 import {SafeAreaView, StatusBar, Button} from 'react-native';
-import {ReanimatedArcBase} from 'reanimated-arc';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import {ReanimatedArcBase} from 'reanimated-arc'; // It's intentionally not listed in package.json to make it easier to develop with example app. Import is mapped in tsconfig.
 import Reanimated, {Easing} from 'react-native-reanimated';
 
 const start = 0;

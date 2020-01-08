@@ -3,10 +3,10 @@
  * but with reanimated
  */
 
-import * as React from "react";
-import { View, ViewStyle, StyleProp, Platform } from "react-native";
-import { Svg, Path, G } from "react-native-svg";
-import Reanimated from "react-native-reanimated";
+import * as React from 'react';
+import {View, ViewStyle, StyleProp, Platform} from 'react-native';
+import {Svg, Path, G} from 'react-native-svg';
+import Reanimated from 'react-native-reanimated';
 
 const {
   add,
@@ -19,7 +19,7 @@ const {
   cond,
   concat,
   min,
-  and
+  and,
 } = Reanimated;
 
 const AnimatedG = Reanimated.createAnimatedComponent(G);
@@ -31,7 +31,7 @@ type Props = {
   arcSweepAngle: number | Reanimated.Node<number>;
   rotation: string | Reanimated.Node<string>;
   color: string | Reanimated.Node<string>;
-  lineCap: "round" | "butt" | "square";
+  lineCap: 'round' | 'butt' | 'square';
   padding: number;
   hideSmallAngle: boolean;
   style?: StyleProp<ViewStyle>;
@@ -39,13 +39,13 @@ type Props = {
 
 export default class AnimatedArc extends React.PureComponent<Props> {
   static defaultProps = {
-    color: "black",
-    rotation: "0deg",
-    lineCap: "round",
+    color: 'black',
+    rotation: '0deg',
+    lineCap: 'round',
     arcSweepAngle: 360,
     padding: 0,
     showEndingDot: false,
-    hideSmallAngle: true
+    hideSmallAngle: true,
   };
 
   animatedString(
@@ -69,15 +69,15 @@ export default class AnimatedArc extends React.PureComponent<Props> {
     centerX: number,
     centerY: number,
     radius: number,
-    angleInDegrees: number | Reanimated.Node<number>
+    angleInDegrees: number | Reanimated.Node<number>,
   ) {
     const angleInRadians = divide(
       multiply(sub(angleInDegrees, 90), Math.PI),
-      180
+      180,
     );
     return {
       x: add(centerX, multiply(radius, cos(angleInRadians))),
-      y: add(centerY, multiply(radius, sin(angleInRadians)))
+      y: add(centerY, multiply(radius, sin(angleInRadians))),
     };
   }
 
@@ -86,33 +86,39 @@ export default class AnimatedArc extends React.PureComponent<Props> {
     y: number,
     radius: number,
     startAngle: number,
-    endAngle: number | Reanimated.Node<number>
+    endAngle: number | Reanimated.Node<number>,
   ) {
     const start = this.polarToCartesian(
       x,
       y,
       radius,
-      multiply(endAngle, 0.9999)
+      multiply(endAngle, 0.9999),
     );
     this.arcEndPosition = start;
 
     const hideSmallAngle = cond(
       and(
         this.props.hideSmallAngle ? 1 : 0,
-        lessOrEq(sub(endAngle, startAngle), 1)
+        lessOrEq(sub(endAngle, startAngle), 1),
       ),
       1,
-      0
+      0,
     );
 
     const end = this.polarToCartesian(x, y, radius, startAngle);
-    const largeArcFlag = cond(lessOrEq(sub(endAngle, startAngle), 180), '0', '1');
+    const largeArcFlag = cond(
+      lessOrEq(sub(endAngle, startAngle), 180),
+      '0',
+      '1',
+    );
 
     return cond(
       hideSmallAngle,
       //@ts-ignore invalid reanimated types
-      "", // empty path to hide arc with angle is less than 1
-      this.animatedString`M ${start.x} ${start.y} A ${radius} ${radius} 0 ${largeArcFlag} 0 ${end.x} ${end.y}`
+      '', // empty path to hide arc with angle is less than 1
+      this.animatedString`M ${start.x} ${
+        start.y
+      } A ${radius} ${radius} 0 ${largeArcFlag} 0 ${end.x} ${end.y}`,
     );
   }
   outerRadius = this.props.diameter / 2;
@@ -123,7 +129,7 @@ export default class AnimatedArc extends React.PureComponent<Props> {
     y: Reanimated.Node<number>;
   } = {
     x: new Reanimated.Value<number>(0),
-    y: new Reanimated.Value<number>(0)
+    y: new Reanimated.Value<number>(0),
   };
 
   circlePath = this.getCirclePath(
@@ -131,30 +137,28 @@ export default class AnimatedArc extends React.PureComponent<Props> {
     this.outerRadius,
     this.innerRadius,
     0,
-    min(this.props.arcSweepAngle, 360)
+    min(this.props.arcSweepAngle, 360),
   );
 
   render() {
-    const { diameter, lineWidth, color, style, rotation, lineCap } = this.props;
+    const {diameter, lineWidth, color, style, rotation, lineCap} = this.props;
 
-    const offsetAndroid = Platform.OS === "android" ? this.outerRadius : 0;
+    const offsetAndroid = Platform.OS === 'android' ? this.outerRadius : 0;
     const pivot = this.outerRadius;
     return (
       <View style={style}>
         <Svg
           width={diameter}
           height={diameter}
-          viewBox={`${-pivot} ${-pivot} ${diameter} ${diameter}`}
-        >
+          viewBox={`${-pivot} ${-pivot} ${diameter} ${diameter}`}>
           <AnimatedG
             style={{
               transform: [
-                { translateX: -offsetAndroid },
-                { rotate: rotation },
-                { translateX: offsetAndroid }
-              ]
-            }}
-          >
+                {translateX: -offsetAndroid},
+                {rotate: rotation},
+                {translateX: offsetAndroid},
+              ],
+            }}>
             <AnimatedPath
               d={this.circlePath}
               stroke={color}

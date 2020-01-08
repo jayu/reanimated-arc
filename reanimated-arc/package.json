@@ -21,6 +21,8 @@
     "react-native-svg": "^9.13.4"
   },
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "typescript": "tsc --noEmit --skipLibCheck"
   }
 }

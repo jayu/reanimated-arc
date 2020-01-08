@@ -1,0 +1,28 @@
+version: 2.0
+
+jobs:
+  tests:
+    docker:
+      - image: circleci/node:10.14.1
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install NPM dependencies
+          command: yarn
+      - save_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - /node_modules
+      - run:
+          name: Checks
+          command: yarn checks
+workflows:
+  version: 2
+  checks:
+    jobs:
+      - tests:
+          filters:
+            branches:
+              ignore: master

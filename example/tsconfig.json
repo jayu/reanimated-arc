@@ -31,7 +31,8 @@
       "reanimated-arc": ["../reanimated-arc"]
     },
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "resolveJsonModule": true
   },
   "exclude": [
     "node_modules",

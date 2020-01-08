@@ -6,7 +6,7 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "typescript": "tsc --noEmit --skipLibCheck"
   },
   "dependencies": {
     "react": "16.9.0",

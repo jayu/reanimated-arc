@@ -1,1 +1,1 @@
-export { default as ReanimatedArcBase } from "./ReanimatedArcBase";
+export {default as ReanimatedArcBase} from './ReanimatedArcBase';

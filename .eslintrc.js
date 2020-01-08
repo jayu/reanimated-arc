@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  extends: '@react-native-community',
+  extends: '@callstack',
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint'],
 };
