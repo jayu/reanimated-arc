@@ -3,9 +3,9 @@
  * but with reanimated
  */
 
-import React from "react";
+import * as React from "react";
 import { View, ViewStyle, StyleProp, Platform } from "react-native";
-import { Svg, Path, G, Circle } from "react-native-svg";
+import { Svg, Path, G } from "react-native-svg";
 import Reanimated from "react-native-reanimated";
 
 const {

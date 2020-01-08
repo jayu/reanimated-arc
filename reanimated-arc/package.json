@@ -2,8 +2,11 @@
   "name": "reanimated-arc",
   "version": "0.1.0",
   "description": "Reanimted Arc component that can be used to create circular progress bars with native performance.",
-  "main": "src/ReanimatedArcBase.tsx",
-  "types": "src/ReanimatedArcBase.tsx",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "author": "Jakub Mazurek @ Callstack",
   "license": "MIT",
   "repository": {
@@ -12,9 +15,12 @@
     "directory": "reanimated-arc"
   },
   "peerDependencies": {
-    "react": "^16.12.0",
-    "react-native": "^0.61.5",
+    "react": "*",
+    "react-native": "*",
     "react-native-reanimated": "^1.4.0",
-    "react-native-svg": "^10.0.0"
+    "react-native-svg": "^9.13.4"
+  },
+  "scripts": {
+    "build": "tsc"
   }
 }

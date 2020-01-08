@@ -2,16 +2,16 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "commonjs",
-    "lib": ["es6"],
+    "lib": ["esnext"],
     "allowJs": true,
     "checkJs": true,
     "jsx": "react-native",
     "declaration": true,
     "sourceMap": true,
     "outDir": "./dist",
-    "rootDir": "./",
+    // "rootDir": "./src",
     "removeComments": true,
-    "noEmit": true,
+    "noEmit": false,
     "incremental": false,
     "isolatedModules": true,
     "strict": true,
@@ -26,10 +26,7 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
-    "baseUrl": "./",
-    "paths": {
-      "reanimated-arc": ["../reanimated-arc"]
-    },
+    "baseUrl": "./src",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true
   },
@@ -37,6 +34,7 @@
     "node_modules",
     "babel.config.js",
     "metro.config.js",
-    "jest.config.js"
+    "jest.config.js",
+    "dist/*"
   ]
 }
