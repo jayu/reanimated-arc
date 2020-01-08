@@ -27,12 +27,11 @@ const AnimatedPath = Reanimated.createAnimatedComponent(Path);
 
 type Props = {
   diameter: number;
-  lineWidth: number;
+  width: number;
   arcSweepAngle: number | Reanimated.Node<number>;
   rotation: string | Reanimated.Node<string>;
   color: string | Reanimated.Node<string>;
   lineCap: 'round' | 'butt' | 'square';
-  padding: number;
   hideSmallAngle: boolean;
   style?: StyleProp<ViewStyle>;
 };
@@ -43,8 +42,6 @@ export default class AnimatedArc extends React.PureComponent<Props> {
     rotation: '0deg',
     lineCap: 'round',
     arcSweepAngle: 360,
-    padding: 0,
-    showEndingDot: false,
     hideSmallAngle: true,
   };
 
@@ -122,7 +119,7 @@ export default class AnimatedArc extends React.PureComponent<Props> {
     );
   }
   outerRadius = this.props.diameter / 2;
-  innerRadius = this.props.diameter / 2 - this.props.lineWidth / 2;
+  innerRadius = this.props.diameter / 2 - this.props.width / 2;
 
   arcEndPosition: {
     x: Reanimated.Node<number>;
@@ -141,7 +138,7 @@ export default class AnimatedArc extends React.PureComponent<Props> {
   );
 
   render() {
-    const {diameter, lineWidth, color, style, rotation, lineCap} = this.props;
+    const {diameter, width, color, style, rotation, lineCap} = this.props;
 
     const offsetAndroid = Platform.OS === 'android' ? this.outerRadius : 0;
     const pivot = this.outerRadius;
@@ -162,7 +159,7 @@ export default class AnimatedArc extends React.PureComponent<Props> {
             <AnimatedPath
               d={this.circlePath}
               stroke={color}
-              strokeWidth={lineWidth}
+              strokeWidth={width}
               strokeLinecap={lineCap}
               fill="transparent"
               transform={`translate(${-pivot} ${-pivot})`}
