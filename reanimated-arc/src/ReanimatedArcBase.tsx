@@ -1,0 +1,171 @@
+/*
+ * implemented on the base of https://github.com/bartgryszko/react-native-circular-progress/blob/master/src/CircularProgress.js
+ * but with reanimated
+ */
+
+import React from "react";
+import { View, ViewStyle, StyleProp, Platform } from "react-native";
+import { Svg, Path, G, Circle } from "react-native-svg";
+import Reanimated from "react-native-reanimated";
+
+const {
+  add,
+  sub,
+  multiply,
+  divide,
+  cos,
+  sin,
+  lessOrEq,
+  cond,
+  concat,
+  min,
+  and
+} = Reanimated;
+
+const AnimatedG = Reanimated.createAnimatedComponent(G);
+const AnimatedPath = Reanimated.createAnimatedComponent(Path);
+
+type Props = {
+  diameter: number;
+  lineWidth: number;
+  arcSweepAngle: number | Reanimated.Node<number>;
+  rotation: string | Reanimated.Node<string>;
+  color: string | Reanimated.Node<string>;
+  lineCap: "round" | "butt" | "square";
+  padding: number;
+  hideSmallAngle: boolean;
+  style?: StyleProp<ViewStyle>;
+};
+
+export default class AnimatedArc extends React.PureComponent<Props> {
+  static defaultProps = {
+    color: "black",
+    rotation: "0deg",
+    lineCap: "round",
+    arcSweepAngle: 360,
+    padding: 0,
+    showEndingDot: false,
+    hideSmallAngle: true
+  };
+
+  animatedString(
+    strings: TemplateStringsArray,
+    ...values: Array<number | string | Reanimated.Node<string | number>>
+  ) {
+    const arr = [];
+    const n = values.length;
+    for (let i = 0; i < n; i++) {
+      arr.push(strings[i], values[i]);
+    }
+    const end = strings[n];
+    if (end) {
+      arr.push(end);
+    }
+    //@ts-ignore
+    return concat(...arr);
+  }
+
+  polarToCartesian(
+    centerX: number,
+    centerY: number,
+    radius: number,
+    angleInDegrees: number | Reanimated.Node<number>
+  ) {
+    const angleInRadians = divide(
+      multiply(sub(angleInDegrees, 90), Math.PI),
+      180
+    );
+    return {
+      x: add(centerX, multiply(radius, cos(angleInRadians))),
+      y: add(centerY, multiply(radius, sin(angleInRadians)))
+    };
+  }
+
+  getCirclePath(
+    x: number,
+    y: number,
+    radius: number,
+    startAngle: number,
+    endAngle: number | Reanimated.Node<number>
+  ) {
+    const start = this.polarToCartesian(
+      x,
+      y,
+      radius,
+      multiply(endAngle, 0.9999)
+    );
+    this.arcEndPosition = start;
+
+    const hideSmallAngle = cond(
+      and(
+        this.props.hideSmallAngle ? 1 : 0,
+        lessOrEq(sub(endAngle, startAngle), 1)
+      ),
+      1,
+      0
+    );
+
+    const end = this.polarToCartesian(x, y, radius, startAngle);
+    const largeArcFlag = cond(lessOrEq(sub(endAngle, startAngle), 180), '0', '1');
+
+    return cond(
+      hideSmallAngle,
+      //@ts-ignore invalid reanimated types
+      "", // empty path to hide arc with angle is less than 1
+      this.animatedString`M ${start.x} ${start.y} A ${radius} ${radius} 0 ${largeArcFlag} 0 ${end.x} ${end.y}`
+    );
+  }
+  outerRadius = this.props.diameter / 2;
+  innerRadius = this.props.diameter / 2 - this.props.lineWidth / 2;
+
+  arcEndPosition: {
+    x: Reanimated.Node<number>;
+    y: Reanimated.Node<number>;
+  } = {
+    x: new Reanimated.Value<number>(0),
+    y: new Reanimated.Value<number>(0)
+  };
+
+  circlePath = this.getCirclePath(
+    this.outerRadius,
+    this.outerRadius,
+    this.innerRadius,
+    0,
+    min(this.props.arcSweepAngle, 360)
+  );
+
+  render() {
+    const { diameter, lineWidth, color, style, rotation, lineCap } = this.props;
+
+    const offsetAndroid = Platform.OS === "android" ? this.outerRadius : 0;
+    const pivot = this.outerRadius;
+    return (
+      <View style={style}>
+        <Svg
+          width={diameter}
+          height={diameter}
+          viewBox={`${-pivot} ${-pivot} ${diameter} ${diameter}`}
+        >
+          <AnimatedG
+            style={{
+              transform: [
+                { translateX: -offsetAndroid },
+                { rotate: rotation },
+                { translateX: offsetAndroid }
+              ]
+            }}
+          >
+            <AnimatedPath
+              d={this.circlePath}
+              stroke={color}
+              strokeWidth={lineWidth}
+              strokeLinecap={lineCap}
+              fill="transparent"
+              transform={`translate(${-pivot} ${-pivot})`}
+            />
+          </AnimatedG>
+        </Svg>
+      </View>
+    );
+  }
+}
