@@ -67,9 +67,9 @@ export default App;
 |----------------|------------------------------------|-----------------------------------------------|--------------|
 | **diameter**   | `number`                           | Diameter of the arc                           | **required** |
 | **width**      | `number`                           | Width of the arc stroke                       | **required** |
-| arcSweepAngle  | `number \| Reanimated.Node<number>` | Angle defining part of the circle to be shown | `360`        |
-| rotation       | `string \| Reanimated.Node<string>` | Rotation of the arc                           | `'0deg'`     |
-| color          | `string \| Reanimated.Node<string>` | Color of the arc                              | `'black'`    |
+| arcSweepAngle  | `number \| Reanimated.Node<number>` | Angle defining part of the circle to be shown | `360`        |
+| rotation       | `string \| Reanimated.Node<string>` | Rotation of the arc                           | `'0deg'`     |
+| color          | `string \| Reanimated.Node<string>` | Color of the arc                              | `'black'`    |
 | lineCap        | `'round' \| 'butt' \| 'square'`      | Line ending style                             | `'round'`    |
 | hideSmallAngle | `boolean`                          | Wether to hide arc for angles less than 1     | `true`       |
 | style          | `StyleProp<ViewStyle>`             | Additional styles of the container            | `undefined`  |
@@ -79,12 +79,11 @@ export default App;
 Please note that if `arcSweepAngle`, `rotation` or `color` would be primitive value (not Reanimated node), property would not be animated.
 We are planning to implement a separate wrapper component that will handle animations of primitive values of props on `componentDidUpdate`.
 
-| property       | notes                                                                                                                                                                                    |   |
-|----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
-| color          | Animating color is buggy on **android**. We used `Reanimated.concat` to compose `rgb` color. `Reanimated.color` is not yet supported by `react-native-svg`                               |   |
-| lineCap        | For some reason on **android** angles with value of `90` `180` and `270` with `round` cap appears without rounded end. Using `90.1` `180.1` `270.1` is a workaround for now. | `'round'` |   |
-| hideSmallAngle | When `lineCap="round"` is used, arc of angle `1` is a dot, which is visually bigger than 1 deg                                                                                           |   |                                               |
-
+| property       | notes                                                                                                                                                                        |
+|----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| color          | Animating color is buggy on **android**. We used `Reanimated.concat` to compose `rgb` color. `Reanimated.color` is not yet supported by `react-native-svg`                   |
+| lineCap        | For some reason on **android** angles with value of `90` `180` and `270` with `round` cap appears without rounded end. Using `90.1` `180.1` `270.1` is a workaround for now. |
+| hideSmallAngle | When `lineCap="round"` is used, arc of angle `1` is a dot, which is visually bigger than 1 deg                                                                               |
 ## This is a monorepo
 
 Contents of actual library can be found in [reanimated-arc](/reanimated-arc) subdirectory
