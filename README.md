@@ -82,7 +82,7 @@ We are planning to implement a separate wrapper component that will handle anima
 | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | color          | Animating color is buggy on **android**. We used `Reanimated.concat` to compose `rgb` color. `Reanimated.color` is not yet supported by `react-native-svg`                   |
 | lineCap        | For some reason on **android** angles with value of `90` `180` and `270` with `round` cap appears without rounded end. Using `90.1` `180.1` `270.1` is a workaround for now. |
-| hideSmallAngle | When `lineCap="round"` is used, arc of angle `1` is a dot, which is visually bigger than 1 deg                                                                               |
+| hideSmallAngle | When `lineCap="round"` is used, arc of angle `1` is a dot, which is visually bigger than 1 deg. Prop can be used as a workaround for this issue.                                                                               |
 
 ## This is a monorepo
 
@@ -101,6 +101,6 @@ Library has a great development experience. Follow these steps to set up environ
 
 ## Special Thanks
 
-Special thanks to [Lenus eHealth](https://www.lenusehealth.com/) for their openness to sharing solutions, that was created during the project time, with the open-source community.
+Special thanks to [Lenus eHealth](https://www.lenusehealth.com/) for their openness to sharing solutions, that were created during the project time, with the open-source community.
 
-Library was inspired by `https://github.com/bartgryszko/react-native-circular-progress` and some math behind generating arc was taken directly from that repo. Also big thanks for the authors.
+Library was inspired by [`react-native-circular-progress`](https://github.com/bartgryszko/react-native-circular-progress) and some math behind generating arc was taken directly from that repo. Also big thanks for the authors.
