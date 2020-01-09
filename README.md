@@ -9,7 +9,7 @@
 
 ## Examples
 
-<img src="./assets/arc-example.gif">
+<img src="./assets/arc-example.gif" width="300">
 
 Example app lives in [example](/example) directory
 
