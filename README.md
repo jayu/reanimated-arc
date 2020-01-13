@@ -84,6 +84,10 @@ We are planning to implement a separate wrapper component that will handle anima
 | lineCap        | For some reason on **android** angles with value of `90` `180` and `270` with `round` cap appears without rounded end. Using `90.1` `180.1` `270.1` is a workaround for now. |
 | hideSmallAngle | When `lineCap="round"` is used, arc of angle `1` is a dot, which is visually bigger than 1 deg                                                                               |
 
+## Caveats
+
+It's likely that library will have performance dropdown in some specific cases, especially on **android**. See [Donut example](/example/components/Donut.tsx) as a reference.
+
 ## This is a monorepo
 
 Contents of actual library can be found in [reanimated-arc](/reanimated-arc) subdirectory

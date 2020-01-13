@@ -25,25 +25,27 @@ const {
 const AnimatedG = Reanimated.createAnimatedComponent(G);
 const AnimatedPath = Reanimated.createAnimatedComponent(Path);
 
-type Props = {
+export type Props = {
   diameter: number;
   width: number;
   arcSweepAngle: number | Reanimated.Node<number>;
-  rotation: string | Reanimated.Node<string>;
+  rotation: number | Reanimated.Node<number>;
   color: string | Reanimated.Node<string>;
   lineCap: 'round' | 'butt' | 'square';
   hideSmallAngle: boolean;
   style?: StyleProp<ViewStyle>;
 };
 
+export const defaultProps = {
+  color: 'black',
+  rotation: 0,
+  lineCap: 'round',
+  arcSweepAngle: 360,
+  hideSmallAngle: true,
+};
+
 export default class AnimatedArc extends React.PureComponent<Props> {
-  static defaultProps = {
-    color: 'black',
-    rotation: '0deg',
-    lineCap: 'round',
-    arcSweepAngle: 360,
-    hideSmallAngle: true,
-  };
+  static defaultProps = defaultProps;
 
   animatedString(
     strings: TemplateStringsArray,
@@ -137,8 +139,10 @@ export default class AnimatedArc extends React.PureComponent<Props> {
     min(this.props.arcSweepAngle, 360),
   );
 
+  rotation = concat(this.props.rotation, 'deg');
+
   render() {
-    const {diameter, width, color, style, rotation, lineCap} = this.props;
+    const {diameter, width, color, style, lineCap} = this.props;
 
     const offsetAndroid = Platform.OS === 'android' ? this.outerRadius : 0;
     const pivot = this.outerRadius;
@@ -152,7 +156,7 @@ export default class AnimatedArc extends React.PureComponent<Props> {
             style={{
               transform: [
                 {translateX: -offsetAndroid},
-                {rotate: rotation},
+                {rotate: this.rotation},
                 {translateX: offsetAndroid},
               ],
             }}>
