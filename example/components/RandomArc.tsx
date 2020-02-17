@@ -28,10 +28,7 @@ const RandomArc = () => {
         width={20}
         arcSweepAngle={arcAngle.current}
         lineCap="round"
-        rotation={Reanimated.concat(
-          Reanimated.divide(arcAngle.current, 2),
-          'deg',
-        )}
+        rotation={Reanimated.divide(arcAngle.current, 2)}
       />
       <Button title="Animate Arc!" onPress={animate} />
     </>

@@ -1,7 +1,9 @@
 import React from 'react';
-import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, ScrollView, StyleSheet, View} from 'react-native';
 import Logo from './components/Logo';
 import RandomArc from './components/RandomArc';
+import Donut from './components/Donut';
+import Progress from './components/Progress';
 
 const Spacing = () => <View style={styles.spacing} />;
 const App = () => {
@@ -11,9 +13,11 @@ const App = () => {
         <Spacing />
         <Logo />
         <Spacing />
-        <RandomArc />
+        <Donut />
         <Spacing />
-        <Text style={styles.text}>More examples soon!</Text>
+        <Progress />
+        <Spacing />
+        <RandomArc />
       </ScrollView>
     </SafeAreaView>
   );
@@ -22,9 +26,6 @@ const App = () => {
 const styles = StyleSheet.create({
   scrollViewContent: {
     alignItems: 'center',
-  },
-  text: {
-    fontSize: 20,
   },
   spacing: {
     marginTop: 50,

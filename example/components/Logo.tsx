@@ -26,10 +26,7 @@ const App = () => {
         width={20}
         lineCap="round"
         arcSweepAngle={160}
-        rotation={Reanimated.concat(
-          Reanimated.add(arcAngle.current, 10),
-          'deg',
-        )}
+        rotation={Reanimated.add(arcAngle.current, 10)}
         style={styles.arc1}
       />
       <ReanimatedArcBase
@@ -38,9 +35,9 @@ const App = () => {
         width={20}
         lineCap="round"
         arcSweepAngle={170}
-        rotation={Reanimated.concat(
-          Reanimated.multiply(Reanimated.sub(arcAngle.current, 185), -1),
-          'deg',
+        rotation={Reanimated.multiply(
+          Reanimated.sub(arcAngle.current, 185),
+          -1,
         )}
         style={styles.arc2}
       />
@@ -50,7 +47,7 @@ const App = () => {
         width={20}
         lineCap="round"
         arcSweepAngle={180.1}
-        rotation={Reanimated.concat(arcAngle.current, 'deg')}
+        rotation={arcAngle.current}
         style={styles.arc3}
       />
     </View>
