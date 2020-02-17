@@ -103,7 +103,7 @@ export default App;
 | animationDuration | `number`                        | Animation duration in milliseconds            | `800`           |
 | easing            | `Reanimated.EasingFunction`     | Animation easing function                     | `Easing.linear` |
 | arcSweepAngle     | `number`                        | Angle defining part of the circle to be shown | `360`           |
-| rotation          | `string`                        | Rotation of the arc                           | `'0deg'`        |
+| rotation          | `number`                        | Rotation of the arc in degrees                | `0`             |
 | color             | `string`                        | Color of the arc                              | `'black'`       |
 | lineCap           | `'round' \| 'butt' \| 'square'` | Line ending style                             | `'round'`       |
 | hideSmallAngle    | `boolean`                       | Wether to hide arc for angles less than 1     | `true`          |
@@ -120,7 +120,7 @@ This component provides ability to control arc by reanimated values or nodes.
 | **diameter**   | `number`                            | Diameter of the arc                           | **required** |
 | **width**      | `number`                            | Width of the arc stroke                       | **required** |
 | arcSweepAngle  | `number \| Reanimated.Node<number>` | Angle defining part of the circle to be shown | `360`        |
-| rotation       | `string \| Reanimated.Node<string>` | Rotation of the arc                           | `'0deg'`     |
+| rotation       | `number \| Reanimated.Node<number>` | Rotation of the arc in degrees                | `0`          |
 | color          | `string \| Reanimated.Node<string>` | Color of the arc                              | `'black'`    |
 | lineCap        | `'round' \| 'butt' \| 'square'`     | Line ending style                             | `'round'`    |
 | hideSmallAngle | `boolean`                           | Wether to hide arc for angles less than 1     | `true`       |
