@@ -21,22 +21,56 @@ Example app lives in [example](/example) directory
 yarn add reanimated-arc
 ```
 
-### Usage or `ReanimatedArcBase`
+### Usage of `ReanimatedArc`
 
 ```tsx
-import React, {useRef} from 'react';
+import React, {useState, useCallback} from 'react';
+import {SafeAreaView, Button} from 'react-native';
+import {ReanimatedArc} from 'reanimated-arc';
+
+const App = () => {
+  const [arc, setArc] = useState(50)
+  const animate = useCallback(() => {
+    setArc(Math.random()* 360)
+  },[])
+    
+  return (
+    <SafeAreaView>
+      <ReanimatedArc
+        color="coral"
+        diameter={200}
+        width={30}
+        arcSweepAngle={arc}
+        lineCap="round"
+        rotation={arc/2}
+      />
+      <Button title="Animate Arc!" onPress={animate} />
+    </SafeAreaView>
+  );
+};
+
+export default App;
+```
+
+### Usage of `ReanimatedArcBase`
+
+```tsx
+import React, {useRef, useCallback} from 'react';
 import {SafeAreaView, Button} from 'react-native';
 import {ReanimatedArcBase} from 'reanimated-arc';
 import Reanimated, {Easing} from 'react-native-reanimated';
 
 const App = () => {
   const arcAngle = useRef(new Reanimated.Value(50));
-  const animate = () =>
-    Reanimated.timing(arcAngle.current, {
-      toValue: Math.random() * 360,
-      easing: Easing.inOut(Easing.quad),
-      duration: 800,
-    }).start();
+  const animate = useCallback(
+    () =>
+      Reanimated.timing(arcAngle.current, {
+        toValue: Math.random() * 360,
+        easing: Easing.inOut(Easing.quad),
+        duration: 800,
+      }).start(),
+    [],
+  );
   return (
     <SafeAreaView>
       <ReanimatedArcBase
@@ -45,10 +79,7 @@ const App = () => {
         width={30}
         arcSweepAngle={arcAngle.current}
         lineCap="round"
-        rotation={Reanimated.concat(
-          Reanimated.divide(arcAngle.current, 2),
-          'deg',
-        )}
+        rotation={Reanimated.divide(arcAngle.current, 2)}
       />
       <Button title="Animate Arc!" onPress={animate} />
     </SafeAreaView>
