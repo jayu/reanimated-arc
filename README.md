@@ -9,7 +9,7 @@
 
 ## Examples
 
-<img src="./assets/arc-example.gif">
+<img src="./assets/arc-example.gif" width="300">
 
 Example app lives in [example](/example) directory
 
@@ -158,6 +158,6 @@ Library has a great development experience. Follow these steps to set up environ
 
 ## Special Thanks
 
-Special thanks to [Lenus eHealth](https://www.lenusehealth.com/) for their openness to sharing solutions, that was created during the project time, with the open-source community.
+Special thanks to [Lenus eHealth](https://www.lenusehealth.com/) for their openness to sharing solutions, that were created during the project time, with the open-source community.
 
-Library was inspired by `https://github.com/bartgryszko/react-native-circular-progress` and some math behind generating arc was taken directly from that repo. Also big thanks for the authors.
+Library was inspired by [`react-native-circular-progress`](https://github.com/bartgryszko/react-native-circular-progress) and some math behind generating arc was taken directly from that repo. Also big thanks for the authors.
