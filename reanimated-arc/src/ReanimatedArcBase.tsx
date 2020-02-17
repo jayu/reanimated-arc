@@ -30,7 +30,7 @@ export type Props = {
   width: number;
   arcSweepAngle: number | Reanimated.Node<number>;
   rotation: number | Reanimated.Node<number>;
-  color: string | Reanimated.Node<string>;
+  color: string | Reanimated.Node<number>;
   lineCap: 'round' | 'butt' | 'square';
   hideSmallAngle: boolean;
   style?: StyleProp<ViewStyle>;

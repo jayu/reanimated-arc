@@ -58,7 +58,29 @@ const App = () => {
 export default App;
 ```
 
+## ReanimatedArc
+
+`ReanimatedArc` component will automatically animate changes of `arcSweepAngle` and `rotation` props. It do not accept reanimated nodes as values for those props.
+
+### Properties
+
+| property          | type                            | description                                   | default         |
+| ----------------- | ------------------------------- | --------------------------------------------- | --------------- |
+| **diameter**      | `number`                        | Diameter of the arc                           | **required**    |
+| **width**         | `number`                        | Width of the arc stroke                       | **required**    |
+| initialAnimation  | `boolean`                       | Whether to perform initial arc animation      | true            |
+| animationDuration | `number`                        | Animation duration in milliseconds            | `800`           |
+| easing            | `Reanimated.EasingFunction`     | Animation easing function                     | `Easing.linear` |
+| arcSweepAngle     | `number`                        | Angle defining part of the circle to be shown | `360`           |
+| rotation          | `string`                        | Rotation of the arc                           | `'0deg'`        |
+| color             | `string`                        | Color of the arc                              | `'black'`       |
+| lineCap           | `'round' \| 'butt' \| 'square'` | Line ending style                             | `'round'`       |
+| hideSmallAngle    | `boolean`                       | Wether to hide arc for angles less than 1     | `true`          |
+| style             | `StyleProp<ViewStyle>`          | Additional styles of the container            | `undefined`     |
+
 ## ReanimatedArcBase
+
+This component provides ability to control arc by reanimated values or nodes.
 
 ### Properties
 
@@ -76,13 +98,13 @@ export default App;
 ### Notes
 
 Please note that if `arcSweepAngle`, `rotation` or `color` would be primitive value (not Reanimated node), property would not be animated.
-We are planning to implement a separate wrapper component that will handle animations of primitive values of props on `componentDidUpdate`.
+If you want to have those values automatically animated please use [`ReanimatedArc` component](#ReanimatedArc)
 
 | property       | notes                                                                                                                                                                        |
 | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | color          | Animating color is buggy on **android**. We used `Reanimated.concat` to compose `rgb` color. `Reanimated.color` is not yet supported by `react-native-svg`                   |
 | lineCap        | For some reason on **android** angles with value of `90` `180` and `270` with `round` cap appears without rounded end. Using `90.1` `180.1` `270.1` is a workaround for now. |
-| hideSmallAngle | When `lineCap="round"` is used, arc of angle `1` is a dot, which is visually bigger than 1 deg                                                                               |
+| hideSmallAngle | When `lineCap="round"` is used, arc of angle `1` is a dot, which is visually bigger than 1 deg. Prop can be used as a workaround for this issue.                             |
 
 ## Caveats
 
