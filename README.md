@@ -21,6 +21,8 @@ Example app lives in [example](/example) directory
 yarn add reanimated-arc
 ```
 
+> Library supports `react-native-svg` in versions from `9.13.4` to last of `10.0.0`. It seems to not work well on Android with `11` and above
+
 ### Usage of `ReanimatedArc`
 
 ```tsx
