@@ -1,19 +1,25 @@
 {
-  "name": "reanimated-arc",
+  "name": "@callstack/reanimated-arc",
   "version": "0.1.0",
+  "license": "MIT",
+  "author": "Jakub Mazurek <jakub.mazurek@callstack.com>",
+  "homepage": "https://github.com/callstack/reanimated-arc",
   "description": "Reanimted Arc component that can be used to create circular progress bars with native performance.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
-  "author": "Jakub Mazurek @ Callstack",
-  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:callstack-internal/reanimated-arc.git",
-    "directory": "reanimated-arc"
+    "url": "git@github.com:callstack/reanimated-arc.git"
   },
+  "keywords": [
+    "react native circular progress",
+    "react native reanimated arc",
+    "react native donut chart",
+    "react native circle"
+  ],
   "peerDependencies": {
     "react": "*",
     "react-native": "*",

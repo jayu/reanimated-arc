@@ -158,6 +158,10 @@ Library has a great development experience. Follow these steps to set up environ
 1. Run `yarn --cwd example start` to start packager. It is required to start packager separately because otherwise it has incorrect working directory.
 1. Run `yarn --cwd example android` or `yarn --cwd example ios` to start example app
 
+## Made with ❤️ at Callstack
+
+React Native Brownfield is an open source project and will always remain free to use. If you think it's cool, please star it 🌟. [Callstack](https://callstack.com) is a group of React and React Native geeks, contact us at [hello@callstack.com](mailto:hello@callstack.com) if you need any help with these or just want to say hi!
+
 ## Special Thanks
 
 Special thanks to [Lenus eHealth](https://www.lenusehealth.com/) for their openness to sharing solutions, that were created during the project time, with the open-source community.
