@@ -1,11 +1,37 @@
-<h1 align="center">
-  Reanimated Arc
+<p align="center">
+  <img height="32" src="./assets/reanimated-arc.png">
   <img width="32" height="32" src="./assets/arc-logo.gif">
-</h1>
+</p>
 
-## About
+<p align="center">
+  Animated Arc for building circular progress bars and donut charts with native performance!
+</p>
 
-`reanimated-arc` is an animated Arc component implemented with `react-native-reanimated`. It can be used to create circular progress bars, donut charts, and many more... all with native performance.
+___
+
+[![Version][version-badge]][package]
+[![MIT License][license-badge]][license]
+
+[![PRs Welcome][prs-welcome-badge]][prs-welcome]
+[![Code of Conduct][coc-badge]][coc]
+[![Sponsored by Callstack][callstack-badge]][callstack]
+
+## Installation
+
+Install `@callstack/reanimated-arc`
+
+```sh
+yarn add @callstack/reanimated-arc
+```
+
+Install `react-native-svg` peer dependency
+
+
+```sh
+yarn add react-native-svg@^10.0.0
+```
+
+> Library supports `react-native-svg` in versions from `9.13.4` to last of `10.0.0`. It seems to not work well on Android with `11` and above
 
 ## Examples
 
@@ -13,22 +39,14 @@
 
 Example app lives in [example](/example) directory
 
-## Getting started
+## Usage 
 
-### Installation
-
-```sh
-yarn add reanimated-arc
-```
-
-> Library supports `react-native-svg` in versions from `9.13.4` to last of `10.0.0`. It seems to not work well on Android with `11` and above
-
-### Usage of `ReanimatedArc`
+### With animations working out-of-the-box using `ReanimatedArc`
 
 ```tsx
 import React, {useState, useCallback} from 'react';
 import {SafeAreaView, Button} from 'react-native';
-import {ReanimatedArc} from 'reanimated-arc';
+import {ReanimatedArc} from '@callstack/reanimated-arc';
 
 const App = () => {
   const [arc, setArc] = useState(50)
@@ -54,12 +72,12 @@ const App = () => {
 export default App;
 ```
 
-### Usage of `ReanimatedArcBase`
+### With full control over the animations using `ReanimatedArcBase`
 
 ```tsx
 import React, {useRef, useCallback} from 'react';
 import {SafeAreaView, Button} from 'react-native';
-import {ReanimatedArcBase} from 'reanimated-arc';
+import {ReanimatedArcBase} from '@callstack/reanimated-arc';
 import Reanimated, {Easing} from 'react-native-reanimated';
 
 const App = () => {
@@ -167,3 +185,16 @@ React Native Brownfield is an open source project and will always remain free to
 Special thanks to [Lenus eHealth](https://www.lenusehealth.com/) for their openness to sharing solutions, that were created during the project time, with the open-source community.
 
 Library was inspired by [`react-native-circular-progress`](https://github.com/bartgryszko/react-native-circular-progress) and some math behind generating arc was taken directly from that repo. Also big thanks for the authors.
+
+<!-- badges -->
+[version-badge]: https://img.shields.io/npm/v/@callstack/reanimated-arc.svg?style=flat-square
+[package]: https://www.npmjs.com/package/@callstack/reanimated-arc
+[license-badge]: https://img.shields.io/npm/l/@callstack/reanimated-arc.svg?style=flat-square
+[license]: https://opensource.org/licenses/MIT
+[prs-welcome-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
+[prs-welcome]: http://makeapullrequest.com
+[coc-badge]: https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat-square
+[coc]: https://github.com/callstack/reanimated-arc/blob/master/CODE_OF_CONDUCT.md
+[all-contributors-badge]: https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square
+[callstack-badge]: https://callstack.com/images/callstack-badge.svg
+[callstack]: https://callstack.com/open-source/?utm_source=github.com&utm_medium=referral&utm_campaign=rnbrownfield&utm_term=readme

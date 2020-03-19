@@ -1,6 +1,6 @@
 {
   "name": "@callstack/reanimated-arc",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "license": "MIT",
   "author": "Jakub Mazurek <jakub.mazurek@callstack.com>",
   "homepage": "https://github.com/callstack/reanimated-arc",
@@ -20,15 +20,22 @@
     "react native donut chart",
     "react native circle"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "typescript": "tsc --noEmit --skipLibCheck",
+    "release": "release-it"
+  },
+  "devDependencies": {
+    "release-it": "^13.1.1"
+  },
   "peerDependencies": {
     "react": "*",
     "react-native": "*",
     "react-native-reanimated": "^1.4.0",
     "react-native-svg": "^9.13.4"
-  },
-  "scripts": {
-    "build": "tsc",
-    "build:watch": "tsc --watch",
-    "typescript": "tsc --noEmit --skipLibCheck"
   }
 }
