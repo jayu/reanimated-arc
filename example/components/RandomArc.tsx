@@ -1,5 +1,5 @@
 import React, {useRef, useEffect} from 'react';
-import {Button} from 'react-native';
+import {Button, View} from 'react-native';
 import {ReanimatedArcBase} from './ReanimatedArc';
 import Reanimated, {Easing} from 'react-native-reanimated';
 
@@ -30,7 +30,9 @@ const RandomArc = () => {
         lineCap="round"
         rotation={Reanimated.divide(arcAngle.current, 2)}
       />
-      <Button title="Animate Arc!" onPress={animate} />
+      <View style={{paddingTop: 20}}>
+        <Button title="Animate Arc!" onPress={animate} />
+      </View>
     </>
   );
 };

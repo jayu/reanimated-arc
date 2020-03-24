@@ -27,16 +27,17 @@ const Donut = () => {
   return (
     <View>
       <ReanimatedArc
-        color="red"
+        color="#8EA604"
         diameter={200}
         width={20}
         arcSweepAngle={values[0].arc}
         lineCap="round"
         rotation={values[0].rotation}
         initialAnimation={false}
+        style={{paddingBottom: 20}}
       />
       <ReanimatedArc
-        color="green"
+        color="#FB6107"
         diameter={200}
         width={20}
         arcSweepAngle={values[1].arc}
@@ -46,7 +47,7 @@ const Donut = () => {
         initialAnimation={false}
       />
       <ReanimatedArc
-        color="blue"
+        color="#FEC601"
         diameter={200}
         width={20}
         arcSweepAngle={values[2].arc}
