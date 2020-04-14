@@ -1,6 +1,6 @@
 {
   "name": "@callstack/reanimated-arc",
-  "version": "0.0.0",
+  "version": "0.1.0-alpha.1",
   "license": "MIT",
   "author": "Jakub Mazurek <jakub.mazurek@callstack.com>",
   "homepage": "https://github.com/callstack/reanimated-arc",
