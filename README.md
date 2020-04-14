@@ -32,6 +32,12 @@ yarn add react-native-svg@^10.0.0
 
 > Library supports `react-native-svg` in versions from `9.13.4` to last of `10.0.0`. It seems to not work well on Android with `11` and above
 
+Install `react-native-reanimated` peer dependency
+
+```sh
+yarn add react-native-reanimated
+```
+
 ## Examples
 
 <img src="assets/arc-example.gif?raw=true" width="300">
