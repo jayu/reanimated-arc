@@ -1,0 +1,6 @@
+{
+  "hooks": {
+    "before:init": "node scripts/release-helper.js before",
+    "after:release": "node scripts/release-helper.js after"
+  }
+}
