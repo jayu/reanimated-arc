@@ -1,13 +1,13 @@
 <p align="center">
-  <img height="32" src="./assets/reanimated-arc.png">
-  <img width="32" height="32" src="./assets/arc-logo.gif">
+  <img height="32" src="assets/reanimated-arc.png">
+  <img width="32" height="32" src="assets/arc-logo.gif?raw=true">
 </p>
 
 <p align="center">
   Animated Arc for building circular progress bars and donut charts with native performance!
 </p>
 
-___
+---
 
 [![Version][version-badge]][package]
 [![MIT License][license-badge]][license]
@@ -26,7 +26,6 @@ yarn add @callstack/reanimated-arc
 
 Install `react-native-svg` peer dependency
 
-
 ```sh
 yarn add react-native-svg@^10.0.0
 ```
@@ -35,11 +34,11 @@ yarn add react-native-svg@^10.0.0
 
 ## Examples
 
-<img src="./assets/arc-example.gif" width="300">
+<img src="assets/arc-example.gif?raw=true" width="300">
 
 Example app lives in [example](/example) directory
 
-## Usage 
+## Usage
 
 ### With animations working out-of-the-box using `ReanimatedArc`
 
@@ -49,11 +48,11 @@ import {SafeAreaView, Button} from 'react-native';
 import {ReanimatedArc} from '@callstack/reanimated-arc';
 
 const App = () => {
-  const [arc, setArc] = useState(50)
+  const [arc, setArc] = useState(50);
   const animate = useCallback(() => {
-    setArc(Math.random()* 360)
-  },[])
-    
+    setArc(Math.random() * 360);
+  }, []);
+
   return (
     <SafeAreaView>
       <ReanimatedArc
@@ -62,7 +61,7 @@ const App = () => {
         width={30}
         arcSweepAngle={arc}
         lineCap="round"
-        rotation={arc/2}
+        rotation={arc / 2}
       />
       <Button title="Animate Arc!" onPress={animate} />
     </SafeAreaView>
@@ -187,6 +186,7 @@ Special thanks to [Lenus eHealth](https://www.lenusehealth.com/) for their openn
 Library was inspired by [`react-native-circular-progress`](https://github.com/bartgryszko/react-native-circular-progress) and some math behind generating arc was taken directly from that repo. Also big thanks for the authors.
 
 <!-- badges -->
+
 [version-badge]: https://img.shields.io/npm/v/@callstack/reanimated-arc.svg?style=flat-square
 [package]: https://www.npmjs.com/package/@callstack/reanimated-arc
 [license-badge]: https://img.shields.io/npm/l/@callstack/reanimated-arc.svg?style=flat-square
