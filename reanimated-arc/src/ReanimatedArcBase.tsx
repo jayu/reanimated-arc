@@ -4,7 +4,7 @@
  */
 
 import * as React from 'react';
-import {View, ViewStyle, StyleProp, Platform} from 'react-native';
+import {View, ViewStyle, StyleProp} from 'react-native';
 import {Svg, Path, G} from 'react-native-svg';
 import Reanimated from 'react-native-reanimated';
 
@@ -144,7 +144,6 @@ export default class AnimatedArc extends React.PureComponent<Props> {
   render() {
     const {diameter, width, color, style, lineCap} = this.props;
 
-    const offsetAndroid = Platform.OS === 'android' ? this.outerRadius : 0;
     const pivot = this.outerRadius;
     return (
       <View style={style}>
@@ -154,11 +153,7 @@ export default class AnimatedArc extends React.PureComponent<Props> {
           viewBox={`${-pivot} ${-pivot} ${diameter} ${diameter}`}>
           <AnimatedG
             style={{
-              transform: [
-                {translateX: -offsetAndroid},
-                {rotate: this.rotation},
-                {translateX: offsetAndroid},
-              ],
+              transform: [{rotate: this.rotation}],
             }}>
             <AnimatedPath
               d={this.circlePath}

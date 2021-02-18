@@ -27,6 +27,7 @@ const Stopwatch = () => {
         clearTimeout(timeout2);
       };
     }
+    return () => null;
   }, [currentTime, stopWatchActive]);
 
   const startCounting = () => {
