@@ -27,10 +27,10 @@ yarn add @callstack/reanimated-arc
 Install `react-native-svg` peer dependency
 
 ```sh
-yarn add react-native-svg@^10.0.0
+yarn add react-native-svg@^12.0.0
 ```
 
-> Library supports `react-native-svg` in versions from `9.13.4` to last of `10.0.0`. It seems to not work well on Android with `11` and above
+> Library supports `react-native-svg` from version `12.0.0` onward.
 
 Install `react-native-reanimated` peer dependency
 
